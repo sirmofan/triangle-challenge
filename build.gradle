@@ -1,12 +1,23 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.triangle.challenge'
+version ''
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClass = 'org.text.formatter.Formatter'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.triangle.challenge.Main'
+    }
 }
 
 dependencies {

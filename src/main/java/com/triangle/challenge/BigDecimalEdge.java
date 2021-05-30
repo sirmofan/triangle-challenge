@@ -24,6 +24,11 @@ public class BigDecimalEdge implements Edge{
 
     @Override
     public int hashCode() {
-        return Objects.hash(length);
+        return Objects.hash(length.stripTrailingZeros());
+    }
+
+    @Override
+    public BigDecimal getLengthAsBigBigDecimal() {
+        return length;
     }
 }

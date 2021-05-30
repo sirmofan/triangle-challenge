@@ -16,9 +16,9 @@ public class Triangle<T extends Edge> {
     }
 
     public String getTriangleType() {
-        if (x.equals(y) && y.equals(z) && z.equals(x)) {
+        if (x.compareLength(y) && y.compareLength(z) && z.compareLength(x)) {
             return "equilateral";
-        } else if (x.equals(y) || y.equals(z) || z.equals(x)) {
+        } else if (x.compareLength(y) || y.compareLength(z) || z.compareLength(x)) {
             return "isosceles";
         } else {
             return "scalene";
@@ -30,7 +30,7 @@ public class Triangle<T extends Edge> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return Objects.equals(x, triangle.x) && Objects.equals(y, triangle.y) && Objects.equals(z, triangle.z);
+        return x.compareLength(triangle.x) && y.compareLength(triangle.y) && z.compareLength(triangle.z);
     }
 
     @Override

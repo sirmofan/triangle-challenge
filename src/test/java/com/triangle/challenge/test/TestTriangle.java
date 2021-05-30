@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class TestTriangle {
 
@@ -45,6 +46,25 @@ public class TestTriangle {
     public void testScalene() {
         Triangle triangle = new Triangle(getLengthTwoEdge(), getLengthTenEdge(), getLengthOneEdge());
         Assertions.assertEquals("scalene", triangle.getTriangleType());
+    }
+
+    @Test
+    public void testHashcode(){
+       BigDecimalEdge scaleZero  = new BigDecimalEdge(BigDecimal.ONE);
+       BigDecimalEdge scaleOne = new BigDecimalEdge(BigDecimal.ONE.setScale(1, RoundingMode.UNNECESSARY));
+       Triangle<BigDecimalEdge> triangleScaleZero = new Triangle<>(scaleZero,scaleZero,scaleZero);
+       Triangle<BigDecimalEdge> triangleScaleOne = new Triangle<>(scaleOne,scaleOne,scaleOne);
+
+       Assertions.assertEquals(triangleScaleOne.hashCode(),triangleScaleZero.hashCode());
+    }
+
+    @Test
+    public void testEquals(){
+        BigDecimalEdge edge  = new BigDecimalEdge(BigDecimal.ONE);
+        Triangle<BigDecimalEdge> triangleOne = new Triangle<>(edge,edge,edge);
+        Triangle<BigDecimalEdge> triangleTwo = new Triangle<>(edge,edge,edge);
+
+        Assertions.assertEquals(triangleOne,triangleTwo);
     }
 
 
